@@ -390,13 +390,36 @@
   }
   window.addEventListener('load', layoutBulbs);
 
+  const SIGNUP_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxkHbtlHCYvc_nOoozRZchpZbCq04b5Xu3P2swn9CASpstZFt6e4PChh9QxpYepHHTI/exec';
+
   function handleSignup(e){
     e.preventDefault();
-    const btn = e.target.querySelector('button');
+    const form = e.target;
+    const btn = form.querySelector('button');
+    const input = form.querySelector('input[type="email"]');
     const original = btn.textContent;
-    btn.textContent = "You're on the list";
-    btn.style.opacity = '0.7';
-    setTimeout(()=>{ btn.textContent = original; btn.style.opacity='1'; e.target.reset(); }, 2200);
+    const email = input.value;
+
+    btn.textContent = 'Submitting...';
+    btn.disabled = true;
+
+    const body = new URLSearchParams();
+    body.append('email', email);
+
+    fetch(SIGNUP_ENDPOINT, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: body
+    }).then(()=>{
+      btn.textContent = "You're on the list";
+      btn.style.opacity = '0.7';
+      setTimeout(()=>{ btn.textContent = original; btn.style.opacity='1'; btn.disabled = false; form.reset(); }, 2600);
+    }).catch(()=>{
+      btn.textContent = 'Something went wrong — try again';
+      btn.disabled = false;
+      setTimeout(()=>{ btn.textContent = original; }, 2600);
+    });
+
     return false;
   }
 </script>
