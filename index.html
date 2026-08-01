@@ -131,6 +131,39 @@
       0 0 22px rgba(45,232,176,0.55),
       0 0 46px rgba(45,232,176,0.32);
   }
+
+  /* SCAN IT SEND IT BOOK IT hero headline — colors match the app's own splash screen */
+  .scan-send-book{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(28px, 4.4vw, 44px);
+    letter-spacing:0.04em;
+    margin:0 auto 48px;
+    display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap;
+  }
+  .scan-send-book span{display:inline-block;}
+  .scan-send-book .dot{color:var(--muted); font-size:0.5em;}
+  .scan-send-book .s1{color:var(--teal); text-shadow:0 0 8px rgba(45,232,176,0.7), 0 0 26px rgba(45,232,176,0.4);}
+  .scan-send-book .s2{color:var(--amber); text-shadow:0 0 8px rgba(255,193,94,0.7), 0 0 26px rgba(255,193,94,0.4);}
+  .scan-send-book .s3{color:var(--pink); text-shadow:0 0 8px rgba(255,92,147,0.7), 0 0 26px rgba(255,92,147,0.4);}
+
+  .hero-phones{
+    display:flex; justify-content:center; align-items:flex-end; gap:18px; margin:0 auto 50px;
+    flex-wrap:wrap;
+  }
+  .hero-phone{
+    width:180px; border-radius:26px; overflow:hidden; border:5px solid #1c1c28;
+    box-shadow:0 20px 50px rgba(0,0,0,0.55), 0 0 0 1px #2a2a3a;
+    background:#000;
+  }
+  .hero-phone img{display:block; width:100%; height:auto;}
+  .hero-phone.mid{
+    width:206px; margin-bottom:14px;
+    box-shadow:0 28px 64px rgba(255,92,147,0.18), 0 20px 50px rgba(0,0,0,0.6), 0 0 0 1px #2a2a3a;
+  }
+  @media (max-width:640px){
+    .hero-phone{width:130px; border-radius:20px; border-width:4px;}
+    .hero-phone.mid{width:150px;}
+  }
   .tagline{
     max-width:560px; margin:34px auto 0; font-size:19px; color:var(--muted); font-weight:500;
   }
@@ -283,15 +316,17 @@
   <div class="wrap">
     <div class="kicker">Coming soon to iOS</div>
 
-    <div class="sign-panel">
-      <div class="bulb-ring" id="bulbRing"></div>
-      <h1 class="hero-title">
-        <span class="line1">DEGEN</span>
-        <span class="line2">DASHBOARD</span>
-      </h1>
+    <div class="scan-send-book">
+      <span class="s1">SCAN IT</span><span class="dot">·</span><span class="s2">SEND IT</span><span class="dot">·</span><span class="s3">BOOK IT</span>
     </div>
 
-    <p class="tagline"><b>Scan it. Send it. Book it.</b><br>Log every session at the speed of the floor — TITO tickets, W-2Gs, and a tax record built while you play.</p>
+    <div class="hero-phones">
+      <div class="hero-phone"><img src="screenshot-start.png" alt="Starting a new session in Degen Dashboard"></div>
+      <div class="hero-phone mid"><img src="screenshot-home.png" alt="Degen Dashboard home screen showing net results"></div>
+      <div class="hero-phone"><img src="screenshot-tax.png" alt="Degen Dashboard tax summary screen"></div>
+    </div>
+
+    <p class="tagline">Log every session at the speed of the floor — TITO tickets, W-2Gs, and a tax record built while you play.</p>
 
     <form class="signup" onsubmit="return handleSignup(event)">
       <input id="email" type="email" placeholder="you@email.com" required>
@@ -440,40 +475,6 @@
 </footer>
 
 <script>
-  // build the bulb ring around the sign panel
-  const ring = document.getElementById('bulbRing');
-  const panel = ring.parentElement;
-  function layoutBulbs(){
-    ring.innerHTML = '';
-    const w = panel.clientWidth, h = panel.clientHeight;
-    const spacing = 34;
-    const perimeter = 2*(w+h);
-    const count = Math.max(16, Math.floor(perimeter/spacing));
-    for(let i=0;i<count;i++){
-      const t = i/count;
-      const d = t*perimeter;
-      let x,y;
-      if(d < w){ x = d; y = 0; }
-      else if(d < w+h){ x = w; y = d-w; }
-      else if(d < 2*w+h){ x = w-(d-w-h); y = h; }
-      else { x = 0; y = h-(d-2*w-h); }
-      const b = document.createElement('div');
-      b.className = 'bulb';
-      b.style.left = (x-3)+'px';
-      b.style.top = (y-3)+'px';
-      b.style.animationDelay = (t*3)+'s';
-      ring.appendChild(b);
-    }
-  }
-  layoutBulbs();
-  window.addEventListener('resize', layoutBulbs);
-  // recalculate once the marquee font actually finishes loading —
-  // otherwise the ring is measured against pre-font-swap dimensions and drifts off-center
-  if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(layoutBulbs);
-  }
-  window.addEventListener('load', layoutBulbs);
-
   const SIGNUP_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxkHbtlHCYvc_nOoozRZchpZbCq04b5Xu3P2swn9CASpstZFt6e4PChh9QxpYepHHTI/exec';
 
   function handleSignup(e){
