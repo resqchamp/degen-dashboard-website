@@ -87,12 +87,11 @@
   }
   nav .wrap{display:flex; align-items:center; justify-content:space-between; height:72px;}
   .brand{display:flex; align-items:center; gap:10px; font-family:'Bebas Neue',sans-serif; font-size:24px; letter-spacing:0.03em;}
-  .brand .dice{width:22px; height:22px; border:2px solid var(--amber); border-radius:5px; position:relative; flex:none;}
-  .brand .dice::before, .brand .dice::after{content:""; position:absolute; width:4px; height:4px; background:var(--amber); border-radius:50%;}
-  .brand .dice::before{top:4px; left:4px;}
-  .brand .dice::after{bottom:4px; right:4px;}
-  .brand span.pink{color:var(--pink); text-shadow:0 0 12px rgba(255,92,147,0.6);}
-  .brand span.teal{color:var(--teal); text-shadow:0 0 12px rgba(45,232,176,0.6);}
+  .brand .logo-mark{height:30px; width:auto; flex:none;}
+  .brand .die-pink{filter:drop-shadow(0 0 1.5px #FF2E6D) drop-shadow(0 0 3px rgba(255,46,109,.65));}
+  .brand .die-teal{filter:drop-shadow(0 0 1.5px #2EE6C8) drop-shadow(0 0 3px rgba(46,230,200,.65));}
+  .brand span.pink{color:var(--pink); text-shadow:0 0 5px rgba(255,92,147,0.55), 0 0 14px rgba(255,92,147,0.5);}
+  .brand span.teal{color:var(--teal); text-shadow:0 0 5px rgba(45,232,176,0.55), 0 0 14px rgba(45,232,176,0.5);}
   .navlinks{display:flex; gap:32px; font-size:14px; color:var(--muted); font-weight:500;}
   .navlinks a:hover{color:var(--text);}
   .nav-cta{
@@ -320,14 +319,29 @@
 <nav>
   <div class="wrap">
     <div class="brand">
-      <span class="dice"></span>
-      <span class="pink">Degen</span>&nbsp;<span class="teal">Dashboard</span>
+      <svg class="logo-mark" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Degen Dashboard">
+        <!-- Left die: pink body, teal pips + amber accent (bottom-left) -->
+        <g transform="translate(5 9) rotate(-10 11 11)" class="die-pink">
+          <rect x="0" y="0" width="22" height="22" rx="5.5" fill="none" stroke="#FF2E6D" stroke-width="2"/>
+          <rect x="1.6" y="1.6" width="18.8" height="18.8" rx="4.1" fill="none" stroke="#fff" stroke-width="0.7" opacity="0.9"/>
+          <circle cx="6.6" cy="6.6" r="2.2" fill="#2EE6C8"/><circle cx="15.4" cy="6.6" r="2.2" fill="#2EE6C8"/>
+          <circle cx="6.6" cy="15.4" r="2.2" fill="#FFB020"/><circle cx="15.4" cy="15.4" r="2.2" fill="#2EE6C8"/>
+        </g>
+        <!-- Right die: teal body, pink pips + amber accent (bottom-left) -->
+        <g transform="translate(33 9) rotate(16 11 11)" class="die-teal">
+          <rect x="0" y="0" width="22" height="22" rx="5.5" fill="none" stroke="#2EE6C8" stroke-width="2"/>
+          <rect x="1.6" y="1.6" width="18.8" height="18.8" rx="4.1" fill="none" stroke="#fff" stroke-width="0.7" opacity="0.9"/>
+          <circle cx="6.6" cy="6.6" r="2.2" fill="#FF2E6D"/><circle cx="15.4" cy="6.6" r="2.2" fill="#FF2E6D"/>
+          <circle cx="6.6" cy="15.4" r="2.2" fill="#FFB020"/><circle cx="15.4" cy="15.4" r="2.2" fill="#FF2E6D"/>
+        </g>
+      </svg>
+      <span class="wordmark"><span class="pink">Degen</span> <span class="teal">Dashboard</span></span>
     </div>
     <div class="navlinks">
-      <a href="#why">Why this app</a>
-      <a href="#how">How it works</a>
+      <a href="#why">Why This App</a>
+      <a href="#how">How It Works</a>
       <a href="#features">Features</a>
-      <a href="#numbers">Your numbers</a>
+      <a href="#numbers">Your Numbers</a>
     </div>
     <div class="social-icons">
       <a href="https://www.instagram.com/degendashboardapp" target="_blank" rel="noopener" aria-label="Instagram">
