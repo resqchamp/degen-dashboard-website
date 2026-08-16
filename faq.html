@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ & Support — Degen Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+ :root{
+ --bg:#0A0A12; --panel:#12121D; --pink:#FF5C93; --teal:#2DE8B0;
+ --text:#F3F1EA; --muted:#9B98AC; --line:#232332;
+ }
+ *{box-sizing:border-box;}
+ body{background:var(--bg); color:var(--text); font-family:'Inter',sans-serif; line-height:1.7; margin:0;}
+ .wrap{max-width:800px; margin:0 auto; padding:80px 28px 120px;}
+ a{color:var(--teal);}
+ .back{display:inline-block; margin-bottom:40px; color:var(--muted); font-size:14px; text-decoration:none;}
+ .back:hover{color:var(--text);}
+ h1{font-family:'Bebas Neue',sans-serif; font-size:52px; letter-spacing:0.01em; margin-bottom:8px;}
+ .subhead{color:var(--muted); font-size:16px; margin-bottom:56px;}
+
+ .section-label{
+ font-family:'Bebas Neue',sans-serif; font-size:15px; letter-spacing:0.12em; text-transform:uppercase;
+ color:var(--teal); margin:56px 0 16px; padding-bottom:8px; border-bottom:1px solid var(--line);
+ }
+ .section-label:first-of-type{margin-top:0;}
+
+ details{
+ background:var(--panel); border:1px solid var(--line); border-radius:12px;
+ margin-bottom:10px; overflow:hidden;
+ }
+ summary{
+ padding:18px 20px; cursor:pointer; font-size:15px; font-weight:600; color:var(--text);
+ list-style:none; display:flex; justify-content:space-between; align-items:center; gap:16px;
+ }
+ summary::-webkit-details-marker{display:none;}
+ summary::after{
+ content:'+'; font-family:'Bebas Neue',sans-serif; font-size:22px; color:var(--pink);
+ flex-shrink:0; transition:transform 0.2s ease;
+ }
+ details[open] summary::after{transform:rotate(45deg);}
+ details[open] summary{border-bottom:1px solid var(--line);}
+ .answer{padding:4px 20px 20px; color:var(--muted); font-size:14.5px;}
+ .answer p{margin:0 0 12px;}
+ .answer p:last-child{margin-bottom:0;}
+ .answer strong{color:var(--text);}
+
+ .contact-box{
+ background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:28px;
+ margin-top:20px; text-align:center;
+ }
+ .contact-box:first-of-type{margin-top:56px;}
+ .contact-box h2{font-family:'Bebas Neue',sans-serif; font-size:24px; margin:0 0 8px;}
+ .contact-box p{color:var(--muted); font-size:14.5px; margin:0 0 18px;}
+ .contact-btn{
+ display:inline-block; background:var(--pink); color:#0A0A12; font-weight:700;
+ padding:12px 28px; border-radius:100px; text-decoration:none; font-size:14.5px;
+ }
+
+ @media (prefers-reduced-motion: reduce){
+ summary::after{transition:none;}
+ }
+</style>
+</head>
+<body>
+<div class="wrap">
+ <a class="back" href="/">← Back to Degen Dashboard</a>
+ <h1>FAQ & Support</h1>
+ <p class="subhead">Answers to what people actually ask us. Can't find yours? Scroll to the bottom.</p>
+
+ <div class="section-label">Getting Started</div>
+
+ <details>
+ <summary>Do I need to create an account?</summary>
+ <div class="answer"><p>No. Degen Dashboard has no login, no sign-up, and no password. Open the app and start logging — everything's tied to your device and your own Apple ID, not an account you have to manage.</p></div>
+ </details>
+
+ <details>
+ <summary>Is Degen Dashboard free?</summary>
+ <div class="answer"><p>Yes. Manual session logging, full history, and backup across your devices are free forever — no trial, no catch. <strong>Pro</strong> ($4.99/month or $39.99/year, with a 7-day free trial) adds unlimited ticket scanning, W-2G capture, and the year-end tax export.</p></div>
+ </details>
+
+ <details>
+ <summary>How do I log my first session?</summary>
+ <div class="answer"><p>Tap <strong>Start a Session</strong> on the Home screen, pick your casino and game, and you're tracking. When you cash out, either enter the amount manually or scan your TITO ticket to fill it in automatically.</p></div>
+ </details>
+
+ <div class="section-label">Scanning</div>
+
+ <details>
+ <summary>How does ticket scanning work?</summary>
+ <div class="answer"><p>Point your camera at a TITO ticket or a credit meter and Degen Dashboard reads the dollar amount for you — no typing. The scan happens entirely on your device; nothing is uploaded anywhere to make it work.</p></div>
+ </details>
+
+ <details>
+ <summary>What if the amount doesn't scan correctly?</summary>
+ <div class="answer"><p>You can always edit the number by hand after a scan — nothing's locked in. For the cleanest read, try to frame just the dollar amount, in decent lighting, holding the camera steady for a second.</p></div>
+ </details>
+
+ <details>
+ <summary>Do I get unlimited scans?</summary>
+ <div class="answer"><p>Everyone gets <strong>3 free scans</strong> to try it out. After that, scanning is a Pro feature. Manual entry stays free and unlimited no matter what.</p></div>
+ </details>
+
+ <div class="section-label">Subscriptions & Billing</div>
+
+ <details>
+ <summary>How does the free trial work?</summary>
+ <div class="answer"><p>Both Pro plans include a 7-day free trial. You won't be charged until the trial ends, and you can cancel anytime before then with nothing billed.</p></div>
+ </details>
+
+ <details>
+ <summary>How do I cancel my subscription?</summary>
+ <div class="answer"><p>Subscriptions are managed through your Apple ID, not inside the app. Go to <strong>Settings → [your name] → Subscriptions</strong> on your iPhone, find Degen Dashboard, and cancel there.</p></div>
+ </details>
+
+ <details>
+ <summary>If I cancel Pro, do I lose my data?</summary>
+ <div class="answer"><p>No. Your session history is yours and stays put. Canceling just returns scanning, W-2G capture, and the tax export to locked — everything you've already logged stays exactly where it is.</p></div>
+ </details>
+
+ <details>
+ <summary>I switched phones — how do I get Pro back?</summary>
+ <div class="answer"><p>As long as you're signed into the same Apple ID, your subscription carries over automatically. Your session data comes with it too, synced privately through your own iCloud account.</p></div>
+ </details>
+
+ <div class="section-label">Tax Export</div>
+
+ <details>
+ <summary>What's actually in the tax export?</summary>
+ <div class="answer"><p>A session-method summary of your year — wins, losses, and any W-2Gs you've logged — formatted the way it's meant to be used for tax prep, not a generic spreadsheet dump. Export as CSV or PDF, or send it straight to your accountant.</p></div>
+ </details>
+
+ <details>
+ <summary>Is this official tax advice?</summary>
+ <div class="answer"><p>No. Degen Dashboard is a record-keeping tool, not a tax advisor. The export is meant to make your actual tax prep easier and more accurate — always check with a qualified professional for your specific situation.</p></div>
+ </details>
+
+ <details>
+ <summary>What's the "90% rule" I keep hearing about?</summary>
+ <div class="answer"><p>Under current session-method rules, you can generally only deduct 90% of your losses against your winnings — meaning it's possible to owe tax on a year you actually lost money overall. This is exactly why tracking every session (not just the big ones) matters, and it's built into how your export is calculated.</p></div>
+ </details>
+
+ <div class="section-label">Your Data & Privacy</div>
+
+ <details>
+ <summary>Where is my data stored?</summary>
+ <div class="answer"><p>On your device, synced privately across your own devices through Apple's iCloud (CloudKit) — tied to your Apple ID. It never touches our servers, and we can't see it.</p></div>
+ </details>
+
+ <details>
+ <summary>Do you sell or share my data?</summary>
+ <div class="answer"><p>No, never. There's nothing to sell — your session data and scanned photos stay private to you.</p></div>
+ </details>
+
+ <details>
+ <summary>What happens to my data if I delete the app?</summary>
+ <div class="answer"><p>Reinstalling brings everything back automatically, as long as you're signed into the same Apple ID — it's stored in your own iCloud, not lost when you delete the app itself.</p></div>
+ </details>
+
+ <div class="section-label">Troubleshooting</div>
+
+ <details>
+ <summary>A scan isn't reading the right amount — what do I do?</summary>
+ <div class="answer"><p>Just tap the amount and correct it by hand — every scanned entry is fully editable. If it's happening often, try better lighting or holding the ticket flatter in frame.</p></div>
+ </details>
+
+ <details>
+ <summary>My sessions aren't showing up on my other device</summary>
+ <div class="answer"><p>Confirm both devices are signed into the <strong>same Apple ID</strong> and connected to the internet — sync can take a minute or two to catch up. If it's still not matching after that, reach out below.</p></div>
+ </details>
+
+ <div class="contact-box">
+ <h2>Still stuck?</h2>
+ <p>We read every message. Reach out and we'll get back to you.</p>
+ <a class="contact-btn" href="mailto:support@8888media.co?subject=Degen%20Dashboard%20Support">Email Support</a>
+ </div>
+
+ <div class="contact-box">
+ <h2>Got an idea?</h2>
+ <p>Feature requests and feedback go straight to the person building this.</p>
+ <a class="contact-btn" href="mailto:feedback@8888media.co?subject=Degen%20Dashboard%20Feedback">Send Feedback</a>
+ </div>
+</div>
+</body>
+</html>
