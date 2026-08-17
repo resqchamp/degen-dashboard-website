@@ -315,6 +315,45 @@
   .foot-links{display:flex; gap:22px; font-size:13px; color:var(--muted);}
   .foot-links a:hover{color:var(--text);}
 </style>
+<style>
+/* ===== Degen Dashboard — motion layer (matches the 8888 studio site) ===== */
+
+/* hero load-in (staggered, no JS, no flash) */
+@keyframes ddHeroIn { from{opacity:0; transform:translateY(20px)} to{opacity:1; transform:none} }
+.hero .kicker         { animation: ddHeroIn .7s cubic-bezier(.2,.7,.2,1) both; }
+.hero .scan-send-book { animation: ddHeroIn .7s cubic-bezier(.2,.7,.2,1) .10s both; }
+.hero .hero-phones    { animation: ddHeroIn .8s cubic-bezier(.2,.7,.2,1) .20s both; }
+.hero .tagline        { animation: ddHeroIn .7s cubic-bezier(.2,.7,.2,1) .34s both; }
+.hero .signup         { animation: ddHeroIn .7s cubic-bezier(.2,.7,.2,1) .44s both; }
+
+/* phones lift on hover */
+.hero-phone { transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease; }
+.hero-phone:hover { transform: translateY(-8px); }
+.hero-phone.mid:hover { transform: translateY(-14px); }
+
+/* feature cards are a 1px-gap hairline grid — lighten instead of lift (keeps the seams clean) */
+.feat { transition: background .25s ease; }
+.feat:hover { background:#151529; }
+
+/* quote card lifts */
+.quote-card { transition: transform .28s cubic-bezier(.2,.7,.2,1), border-color .25s ease; }
+.quote-card:hover { transform: translateY(-4px); border-color:#33344f; }
+
+/* step badges give a little pop on hover (step itself doesn't move — keeps the connector lines aligned) */
+.step-num { transition: transform .25s ease; }
+.step:hover .step-num { transform: scale(1.08); }
+
+/* scroll reveal (progressive — only hides once JS is on) */
+.js-on .reveal { opacity:0; transform:translateY(28px);
+  transition:opacity .75s cubic-bezier(.2,.7,.2,1), transform .75s cubic-bezier(.2,.7,.2,1); }
+.js-on .reveal.in { opacity:1; transform:none; }
+
+/* respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .hero .kicker,.hero .scan-send-book,.hero .hero-phones,.hero .tagline,.hero .signup{ animation:none !important; }
+  .js-on .reveal{ opacity:1 !important; transform:none !important; }
+}
+</style>
 </head>
 <body>
 
@@ -560,6 +599,19 @@
 
     return false;
   }
+</script>
+<script>
+(function(){
+  var d=document, r=d.documentElement;
+  r.classList.add('js-on');
+  var t=d.querySelectorAll('#why, #how, #features, #numbers, .footer-cta');
+  for(var i=0;i<t.length;i++){ t[i].classList.add('reveal'); }
+  if(!('IntersectionObserver' in window)){ for(var j=0;j<t.length;j++){ t[j].classList.add('in'); } return; }
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold:0.10, rootMargin:'0px 0px -6% 0px' });
+  for(var k=0;k<t.length;k++){ io.observe(t[k]); }
+})();
 </script>
 
 </body>
