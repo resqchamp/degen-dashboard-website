@@ -322,7 +322,7 @@
 @keyframes ddHeroIn { from{opacity:0; transform:translateY(20px)} to{opacity:1; transform:none} }
 .hero .kicker         { animation: ddHeroIn .7s cubic-bezier(.2,.7,.2,1) both; }
 .hero .scan-send-book { animation: ddHeroIn .7s cubic-bezier(.2,.7,.2,1) .10s both; }
-.hero .hero-phones    { animation: ddHeroIn .8s cubic-bezier(.2,.7,.2,1) .20s both; }
+.hero .hero-phones    { animation: ddHeroIn .8s cubic-bezier(.2,.7,.2,1) .20s backwards; }  /* backwards (not both) so scroll-parallax can drive transform after load-in */
 .hero .tagline        { animation: ddHeroIn .7s cubic-bezier(.2,.7,.2,1) .34s both; }
 .hero .signup         { animation: ddHeroIn .7s cubic-bezier(.2,.7,.2,1) .44s both; }
 
@@ -703,6 +703,23 @@
     es.forEach(function(en){ if(en.isIntersecting){ run(en.target); io.unobserve(en.target); } });
   }, { threshold: 0.4 });
   vals.forEach(function(el){ io.observe(el); });
+})();
+</script>
+<script>
+/* subtle hero parallax — phone screenshots drift a touch slower than the page (desktop only) */
+(function(){
+  var mm = window.matchMedia;
+  if(mm && (mm('(prefers-reduced-motion: reduce)').matches || mm('(max-width:760px)').matches)) return;
+  var phones = document.querySelector('.hero-phones');
+  if(!phones) return;
+  var ticking = false;
+  function update(){
+    var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+    if(y < 900) phones.style.transform = 'translateY(' + (y * 0.10).toFixed(1) + 'px)';
+    ticking = false;
+  }
+  window.addEventListener('scroll', function(){ if(!ticking){ requestAnimationFrame(update); ticking = true; } }, { passive:true });
+  update();
 })();
 </script>
 
