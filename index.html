@@ -376,6 +376,21 @@
   nav .social-icons { display:none !important; }  /* footer keeps social; nav declutters */
   nav .nav-cta { display:none !important; }        /* CTA lives in the menu on mobile */
 }
+
+/* tagline "SCAN IT · SEND IT · BOOK IT" — a bright pulse fires through the words in sequence */
+.scan-send-book .s1, .scan-send-book .s2, .scan-send-book .s3 {
+  animation: taglineSeq 3s ease-in-out infinite;
+}
+.scan-send-book .s2 { animation-delay: 1s; }
+.scan-send-book .s3 { animation-delay: 2s; }
+@keyframes taglineSeq {
+  0%, 100% { filter: brightness(1);   transform: scale(1); }
+  8%       { filter: brightness(1.7); transform: scale(1.06); }
+  24%      { filter: brightness(1);   transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce){
+  .scan-send-book .s1, .scan-send-book .s2, .scan-send-book .s3 { animation: none; }
+}
 </style>
 </head>
 <body>
@@ -536,15 +551,15 @@
     <div class="board">
       <div class="cell up">
         <div class="label">Tonight</div>
-        <div class="val mono">+$340</div>
+        <div class="val mono" data-to="340">+$340</div>
       </div>
       <div class="cell up">
         <div class="label">This trip</div>
-        <div class="val mono">+$85</div>
+        <div class="val mono" data-to="85">+$85</div>
       </div>
       <div class="cell down">
         <div class="label">Year to date</div>
-        <div class="val mono">−$1,200</div>
+        <div class="val mono" data-to="-1200">−$1,200</div>
       </div>
     </div>
   </div>
@@ -660,6 +675,34 @@
     var em=document.getElementById('email');
     if(em){ em.scrollIntoView({behavior:'smooth',block:'center'}); setTimeout(function(){ em.focus(); }, 400); }
   });
+})();
+</script>
+<script>
+/* count-up the scoreboard numbers when they scroll into view */
+(function(){
+  var vals = document.querySelectorAll('.val[data-to]');
+  if(!vals.length) return;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function fmt(v){ var n=Math.abs(Math.round(v)); return (v<0?'−':'+')+'$'+n.toLocaleString('en-US'); }
+  function target(el){ return parseFloat(el.getAttribute('data-to')) || 0; }
+  if(reduce){ vals.forEach(function(el){ el.textContent = fmt(target(el)); }); return; }
+  vals.forEach(function(el){ el.textContent = fmt(0); });   // start at $0
+  function run(el){
+    var to = target(el), dur = 1100, start = 0;
+    function tick(ts){
+      if(!start) start = ts;
+      var p = Math.min((ts - start)/dur, 1);
+      var e = 1 - Math.pow(1 - p, 3);   // easeOutCubic
+      el.textContent = fmt(to * e);
+      if(p < 1) requestAnimationFrame(tick); else el.textContent = fmt(to);
+    }
+    requestAnimationFrame(tick);
+  }
+  if(!('IntersectionObserver' in window)){ vals.forEach(function(el){ el.textContent = fmt(target(el)); }); return; }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(en){ if(en.isIntersecting){ run(en.target); io.unobserve(en.target); } });
+  }, { threshold: 0.4 });
+  vals.forEach(function(el){ io.observe(el); });
 })();
 </script>
 
