@@ -99,7 +99,12 @@
   .nav-cta{
     font-size:13px; font-weight:600; padding:10px 18px; border-radius:8px;
     background:var(--pink); color:#1a0510; border:none; cursor:pointer;
+    box-shadow:0 0 16px rgba(255,92,147,0.35);
+    transition:transform .15s ease, box-shadow .2s ease, filter .2s ease;
   }
+  .nav-cta:hover{ filter:brightness(1.06); transform:translateY(-1px);
+    box-shadow:0 0 26px rgba(255,92,147,0.6), 0 6px 16px rgba(255,92,147,0.28); }
+  .nav-cta:active{ transform:translateY(0) scale(.97); box-shadow:0 0 18px rgba(255,92,147,0.5); }
   .social-icons{display:flex; align-items:center; gap:16px; margin-right:20px;}
   .social-icons a{
     display:flex; align-items:center; justify-content:center;
@@ -434,7 +439,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5 3-5 3z" fill="currentColor" stroke="none"/></svg>
       </a>
     </div>
-    <button class="nav-cta" onclick="document.getElementById('email').focus()">Get early access</button>
+    <button class="nav-cta" onclick="var e=document.getElementById('email'); if(e){ e.scrollIntoView({behavior:'smooth',block:'center'}); setTimeout(function(){ e.focus(); }, 400); }">Get early access</button>
     <button class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </nav>
