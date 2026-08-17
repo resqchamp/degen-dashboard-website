@@ -90,11 +90,10 @@
   nav .wrap{display:flex; align-items:center; justify-content:space-between; height:72px;}
   .brand{display:flex; align-items:center; gap:10px; font-family:'Bebas Neue',sans-serif; font-size:24px; letter-spacing:0.03em;}
   .brand .logo-mark{height:30px; width:auto; flex:none;}
-  .brand .brand-logo{height:34px; width:auto; display:block; flex:none;}
   .brand .die-pink{filter:drop-shadow(0 0 1.5px #FF2E6D) drop-shadow(0 0 3px rgba(255,46,109,.65));}
   .brand .die-teal{filter:drop-shadow(0 0 1.5px #2EE6C8) drop-shadow(0 0 3px rgba(46,230,200,.65));}
-  .brand span.pink{color:var(--pink); text-shadow:0 0 5px rgba(255,92,147,0.55), 0 0 14px rgba(255,92,147,0.5);}
-  .brand span.teal{color:var(--teal); text-shadow:0 0 5px rgba(45,232,176,0.55), 0 0 14px rgba(45,232,176,0.5);}
+  .brand span.pink{color:var(--pink); text-shadow:0 0 4px var(--pink), 0 0 13px rgba(255,92,147,0.8), 0 0 28px rgba(255,92,147,0.5);}
+  .brand span.teal{color:var(--teal); text-shadow:0 0 4px var(--teal), 0 0 13px rgba(45,232,176,0.8), 0 0 28px rgba(45,232,176,0.5);}
   .navlinks{display:flex; gap:32px; font-size:14px; color:var(--muted); font-weight:500;}
   .navlinks a:hover{color:var(--text);}
   .nav-cta{
@@ -415,7 +414,7 @@
           <circle cx="6.6" cy="15.4" r="2.2" fill="#FFB020"/><circle cx="15.4" cy="15.4" r="2.2" fill="#FF2E6D"/>
         </g>
       </svg>
-      <img class="brand-logo" src="degen-dashboard-logo.svg" alt="Degen Dashboard" width="85" height="34">
+      <span class="wordmark"><span class="pink">Degen</span> <span class="teal">Dashboard</span></span>
     </div>
     <div class="navlinks">
       <a href="#why">Why This App</a>
