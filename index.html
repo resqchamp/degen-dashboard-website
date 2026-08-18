@@ -14,7 +14,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Degen Dashboard — Track every session. Own every number.</title>
-<meta name="description" content="The only casino session tracker that scans your TITO ticket and builds your tax record while you play. Track wins and losses, log every W-2G, and export a session-method tax report in one tap. Coming soon to iOS.">
+<meta name="description" content="The only casino session tracker that scans your TITO ticket and builds your tax record while you play. Track wins and losses, log every W-2G, and export a session-method tax report in one tap. Now on the App Store.">
 <meta name="keywords" content="casino tracker, gambling log, gambling tracker app, TITO scanner, casino session tracker, gambling tax tracker, W-2G tracker, slot machine tracker">
 <link rel="canonical" href="https://www.degendashboard.app/">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -105,6 +105,12 @@
   .nav-cta:hover{ filter:brightness(1.06); transform:translateY(-1px);
     box-shadow:0 0 26px rgba(255,92,147,0.6), 0 6px 16px rgba(255,92,147,0.28); }
   .nav-cta:active{ transform:translateY(0) scale(.97); box-shadow:0 0 18px rgba(255,92,147,0.5); }
+  /* Official Apple "Download on the App Store" badge */
+  .appbadge{ display:inline-block; line-height:0; border-radius:9px; transition:transform .15s ease, filter .2s ease; }
+  .appbadge img{ display:block; height:56px; width:auto; }
+  .appbadge:hover{ transform:translateY(-2px); filter:brightness(1.08); }
+  .appbadge:active{ transform:translateY(0) scale(.98); }
+  nav .appbadge img{ height:40px; }
   .social-icons{display:flex; align-items:center; gap:16px; margin-right:20px;}
   .social-icons a{
     display:flex; align-items:center; justify-content:center;
@@ -219,6 +225,7 @@
     box-shadow:0 0 22px rgba(45,232,176,0.35);
   }
   .signup button:hover{filter:brightness(1.08);}
+  .hero-cta{display:flex; justify-content:center; margin-top:40px;}
   .fine{margin-top:16px; font-size:13px; color:#6b6880;}
 
   /* SECTION SHARED */
@@ -329,7 +336,7 @@
 .hero .scan-send-book { animation: ddHeroIn .7s cubic-bezier(.2,.7,.2,1) .10s both; }
 .hero .hero-phones    { animation: ddHeroIn .8s cubic-bezier(.2,.7,.2,1) .20s backwards; }  /* backwards (not both) so scroll-parallax can drive transform after load-in */
 .hero .tagline        { animation: ddHeroIn .7s cubic-bezier(.2,.7,.2,1) .34s both; }
-.hero .signup         { animation: ddHeroIn .7s cubic-bezier(.2,.7,.2,1) .44s both; }
+.hero .hero-cta       { animation: ddHeroIn .7s cubic-bezier(.2,.7,.2,1) .44s both; }
 
 /* phones lift on hover */
 .hero-phone { transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease; }
@@ -355,7 +362,7 @@
 
 /* respect reduced motion */
 @media (prefers-reduced-motion: reduce){
-  .hero .kicker,.hero .scan-send-book,.hero .hero-phones,.hero .tagline,.hero .signup{ animation:none !important; }
+  .hero .kicker,.hero .scan-send-book,.hero .hero-phones,.hero .tagline,.hero .hero-cta{ animation:none !important; }
   .js-on .reveal{ opacity:1 !important; transform:none !important; }
 }
 
@@ -379,7 +386,7 @@
 @media (max-width:760px){
   .hamburger { display:block; }
   nav .social-icons { display:none !important; }  /* footer keeps social; nav declutters */
-  nav .nav-cta { display:none !important; }        /* CTA lives in the menu on mobile */
+  nav .nav-appstore { display:none !important; }   /* CTA lives in the menu on mobile */
 }
 
 /* tagline "SCAN IT · SEND IT · BOOK IT" — a bright pulse fires through the words in sequence */
@@ -439,14 +446,14 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5 3-5 3z" fill="currentColor" stroke="none"/></svg>
       </a>
     </div>
-    <button class="nav-cta" onclick="var e=document.getElementById('email'); if(e){ e.scrollIntoView({behavior:'smooth',block:'center'}); setTimeout(function(){ e.focus(); }, 400); }">Get early access</button>
+    <a class="nav-appstore appbadge" href="https://apps.apple.com/app/id6801627093" target="_blank" rel="noopener" aria-label="Download Degen Dashboard on the App Store"><img src="appstore-badge.svg" alt="Download on the App Store" width="120" height="40"></a>
     <button class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
 <header class="hero">
   <div class="wrap">
-    <div class="kicker">Coming soon to iOS</div>
+    <div class="kicker">Now on the App Store</div>
 
     <div class="scan-send-book">
       <span class="s1">SCAN IT</span><span class="dot">·</span><span class="s2">SEND IT</span><span class="dot">·</span><span class="s3">BOOK IT</span>
@@ -460,11 +467,10 @@
 
     <p class="tagline">Log every session at the speed of the floor — TITO tickets, W-2Gs, and a tax record built while you play.</p>
 
-    <form class="signup" onsubmit="return handleSignup(event)">
-      <input id="email" type="email" placeholder="you@email.com" required>
-      <button type="submit">Get early access</button>
-    </form>
-    <p class="fine">No spam. One email when it's live.</p>
+    <div class="hero-cta">
+      <a class="appbadge" href="https://apps.apple.com/app/id6801627093" target="_blank" rel="noopener" aria-label="Download Degen Dashboard on the App Store"><img src="appstore-badge.svg" alt="Download on the App Store" width="168" height="56"></a>
+    </div>
+    <p class="fine">Free on the App Store · iPhone</p>
   </div>
 </header>
 
@@ -573,12 +579,11 @@
 <footer>
   <div class="wrap">
     <div class="footer-cta">
-      <h2 style="font-size:38px;">Be First On The Floor.</h2>
-      <p class="lead" style="margin:0 auto 26px;">Get an email the day Degen Dashboard lands on iOS.</p>
-      <form class="signup" onsubmit="return handleSignup(event)">
-        <input type="email" placeholder="you@email.com" required>
-        <button type="submit">Notify me</button>
-      </form>
+      <h2 style="font-size:38px;">Take It To The Floor.</h2>
+      <p class="lead" style="margin:0 auto 26px;">Download Degen Dashboard free and log your next session in seconds.</p>
+      <div style="display:flex; justify-content:center;">
+        <a class="appbadge" href="https://apps.apple.com/app/id6801627093" target="_blank" rel="noopener" aria-label="Download Degen Dashboard on the App Store"><img src="appstore-badge.svg" alt="Download on the App Store" width="168" height="56"></a>
+      </div>
     </div>
 
     <div class="footer-bottom">
@@ -611,40 +616,6 @@
 </footer>
 
 <script>
-  const SIGNUP_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxkHbtlHCYvc_nOoozRZchpZbCq04b5Xu3P2swn9CASpstZFt6e4PChh9QxpYepHHTI/exec';
-
-  function handleSignup(e){
-    e.preventDefault();
-    const form = e.target;
-    const btn = form.querySelector('button');
-    const input = form.querySelector('input[type="email"]');
-    const original = btn.textContent;
-    const email = input.value;
-
-    btn.textContent = 'Submitting...';
-    btn.disabled = true;
-
-    const body = new URLSearchParams();
-    body.append('email', email);
-
-    fetch(SIGNUP_ENDPOINT, {
-      method: 'POST',
-      mode: 'no-cors',
-      body: body
-    }).then(()=>{
-      btn.textContent = "You're on the list";
-      btn.style.opacity = '0.7';
-      setTimeout(()=>{ btn.textContent = original; btn.style.opacity='1'; btn.disabled = false; form.reset(); }, 2600);
-    }).catch(()=>{
-      btn.textContent = 'Something went wrong — try again';
-      btn.disabled = false;
-      setTimeout(()=>{ btn.textContent = original; }, 2600);
-    });
-
-    return false;
-  }
-</script>
-<script>
 (function(){
   var d=document, r=d.documentElement;
   r.classList.add('js-on');
@@ -664,7 +635,7 @@
   <a href="#features" data-close>Features</a>
   <a href="#numbers" data-close>Your Numbers</a>
   <a href="/faq" data-close>FAQ</a>
-  <a href="#" class="mm-cta" id="mmGetAccess">Get early access</a>
+  <a href="https://apps.apple.com/app/id6801627093" target="_blank" rel="noopener" class="mm-cta appbadge" data-close aria-label="Download Degen Dashboard on the App Store"><img src="appstore-badge.svg" alt="Download on the App Store" width="150" height="50"></a>
 </div>
 <script>
 (function(){
@@ -674,12 +645,6 @@
   ham.addEventListener('click', function(){ setOpen(true); });
   menu.querySelectorAll('[data-close], .mm-close').forEach(function(el){ el.addEventListener('click', function(){ setOpen(false); }); });
   document.addEventListener('keydown', function(e){ if(e.key==='Escape') setOpen(false); });
-  var cta=document.getElementById('mmGetAccess');
-  if(cta) cta.addEventListener('click', function(e){
-    e.preventDefault(); setOpen(false);
-    var em=document.getElementById('email');
-    if(em){ em.scrollIntoView({behavior:'smooth',block:'center'}); setTimeout(function(){ em.focus(); }, 400); }
-  });
 })();
 </script>
 <script>
