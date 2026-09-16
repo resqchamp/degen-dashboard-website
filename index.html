@@ -730,7 +730,7 @@
 (function(){
   try{
     var s=new URLSearchParams(location.search).get('s');
-    var allow={'fb-natl':1,'fb-vegasac':1,'ig-bio':1,'tt-bio':1,'yt-bio':1,'fb-bio':1,'email':1,'card':1};
+    var allow={'fb-natl':1,'fb-vegasac':1,'fb-rap':1,'fb-tax':1,'ig-bio':1,'tt-bio':1,'yt-bio':1,'fb-bio':1,'email':1,'card':1};
     if(s&&allow[s]){
       document.querySelectorAll('a[href*="apps.apple.com/app/id6801627093"]').forEach(function(a){
         a.href=a.href.replace(/ct=[^&]*/,'ct='+s);
